@@ -45,3 +45,32 @@ AND (hire_date BETWEEN '1985-01-01' AND '1988-12-31')
 SELECT * FROM retirement_info 
 
 ---------------------------------------------------------
+--joining tables to get retiring employees first/last names, emp number, department
+
+--joining departments and dept_manager tables
+SELECT d.dept_name, 
+	dm.emp_no,
+	dm.from_date,
+	dm.to_date
+FROM departments AS d
+INNER JOIN dept_manager AS dm
+ON d.dept_no = dm.dept_no
+
+--want employee number, employee first/last name, & if they're still working there
+--left joining retirement_info with dep_emp on emp_no column
+SELECT ri.emp_no, 
+	ri.first_name, 
+	ri.last_name, 
+	de.to_date
+INTO current_emp
+FROM retirement_info AS ri
+LEFT JOIN dept_emp AS de 
+ON ri.emp_no = de.emp_no
+WHERE de.to_date = ('9999-01-01'); --date is like this because we're getting people who still work there
+
+
+SELECT COUNT(emp_no) FROM current_emp;
+
+SELECT * FROM current_emp
+
+-------------------------------------------------------------
