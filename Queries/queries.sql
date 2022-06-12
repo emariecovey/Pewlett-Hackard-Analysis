@@ -89,3 +89,92 @@ ORDER BY de.dept_no;
 SELECT * FROM emp_by_dept
 
 --------------------------------------------------------------
+--making additional needed lists:
+
+--select text, command button, forward slash button comments things out
+
+
+--1. Employee Information: A list of all current employees containing their 
+--unique employee number, their last name, first name, gender, and salary
+
+--this table has low salaries?
+
+SELECT * FROM salaries
+ORDER BY salaries.to_date DESC;
+
+SELECT e.emp_no,
+	e.first_name,
+	e.last_name,
+	e.gender,
+	s.salary,
+	de.to_date
+INTO emp_info
+FROM employees as e
+INNER JOIN salaries as s
+ON (e.emp_no = s.emp_no) 
+INNER JOIN dept_emp as de
+ON (e.emp_no = de.emp_no)
+WHERE (e.birth_date BETWEEN '1952-01-01' AND '1955-12-31')
+	AND (e.hire_date BETWEEN '1985-01-01' AND '1988-12-31')
+	AND (de.to_date = '9999-01-01');
+
+SELECT * FROM emp_info
+
+--2. Management: A list of managers for each department, including 
+--the department number, name, and the manager's employee number, 
+--last name, first name, and the starting and ending employment dates
+
+--this table is right and completed
+
+SELECT dm.dept_no,
+	d.dept_name,
+	dm.emp_no,
+	e.last_name,
+	e.first_name,
+	dm.from_date,
+	dm.to_date
+INTO manager_info
+FROM dept_manager as dm
+	INNER JOIN departments as d
+		ON (dm.dept_no = d.dept_no)
+	INNER JOIN employees as e
+		ON (dm.emp_no = e.emp_no)
+WHERE to_date = ('9999-01-01')
+
+
+
+-- NEED TO FILTER MANAGER TABLE BY THEIR TO DATE, THAT WILL GIVE CURRENT MANAGERS. THEN LEFT JOIN THE OTHERS 
+
+
+--3. Department Retirees: An updated current_emp list that includes 
+--everything it currently has, but also the employee's departments
+
+--this table has more employees than before? 
+
+SELECT ce.emp_no,
+	ce.first_name,
+	ce.last_name,
+	ce.to_date,
+	d.dept_no
+INTO dept_info
+FROM current_emp as ce
+	INNER JOIN dept_emp as de
+	ON (ce.emp_no = de.emp_no)
+	INNER JOIN departments as d
+	ON (de.dept_no = d.dept_no)
+
+select count(emp_no) from current_emp
+--33118 current employees
+
+select count(emp_no) from dept_info
+--36619 employees? How did we get more employees when we used inner joins??????????
+
+
+
+
+
+--additional needed list for sales team: emp num, emp first, emp last, emp dept name
+--everything in retirement_info table, but with sales team
+
+
+--same list as above, but with people in sales and development departments
