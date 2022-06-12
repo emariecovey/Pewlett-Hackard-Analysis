@@ -74,3 +74,18 @@ SELECT COUNT(emp_no) FROM current_emp;
 SELECT * FROM current_emp
 
 -------------------------------------------------------------
+--using count, groupby, and order by (order sorts)
+
+--current employees that could leave count by department number 
+SELECT de.dept_no,
+	COUNT(ce.emp_no)
+INTO emp_by_dept
+FROM dept_emp as de
+RIGHT JOIN current_emp as ce
+ON ce.emp_no = de.emp_no
+GROUP BY de.dept_no
+ORDER BY de.dept_no;
+
+SELECT * FROM emp_by_dept
+
+--------------------------------------------------------------
