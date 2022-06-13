@@ -143,9 +143,6 @@ WHERE to_date = ('9999-01-01')
 
 
 
--- NEED TO FILTER MANAGER TABLE BY THEIR TO DATE, THAT WILL GIVE CURRENT MANAGERS. THEN LEFT JOIN THE OTHERS 
-
-
 --3. Department Retirees: An updated current_emp list that includes 
 --everything it currently has, but also the employee's departments
 
@@ -168,13 +165,37 @@ select count(emp_no) from current_emp
 
 select count(emp_no) from dept_info
 --36619 employees? How did we get more employees when we used inner joins??????????
-
-
-
-
+-------------------------------------------------------------------------------
 
 --additional needed list for sales team: emp num, emp first, emp last, emp dept name
 --everything in retirement_info table, but with sales team
+--emp_no, first_name, last_name, dept_name
 
+SELECT ri.emp_no,
+	ri.first_name,
+	ri.last_name,
+	d.dept_name
+INTO sales_retirement_info
+FROM retirement_info as ri
+	INNER JOIN dept_emp as de
+		ON ri.emp_no = de.emp_no
+	INNER JOIN departments as d
+		ON de.dept_no = d.dept_no
+WHERE d.dept_name = 'Sales'
+
+SELECT * FROM retirement_info
 
 --same list as above, but with people in sales and development departments
+SELECT ri.emp_no,
+	ri.first_name,
+	ri.last_name,
+	d.dept_name
+INTO sales_dev_retirement_info
+FROM retirement_info as ri
+	INNER JOIN dept_emp as de
+		ON ri.emp_no = de.emp_no
+	INNER JOIN departments as d
+		ON de.dept_no = d.dept_no
+WHERE d.dept_name IN ('Sales', 'Development') --says sales or development
+
+SELECT * FROM sales_dev_retirement_info
