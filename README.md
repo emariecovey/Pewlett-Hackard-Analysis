@@ -15,7 +15,7 @@ Data was provided in six tables and included personal data about employees, thei
 
 ERD:
 
-![ERD](https://github.com/emariecovey/Pewlett-Hackard-Analysis/blob/main/EmployeeDB.png)
+![ERD](https://github.com/emariecovey/Pewlett-Hackard-Analysis/blob/main/retire_emp_by_job_title.png)
 
 ## Results: 
 
