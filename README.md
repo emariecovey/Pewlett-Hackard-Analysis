@@ -3,11 +3,14 @@
 ## Overview
 
 The purpose of this analysis was to help the company prepare for the mass retirement of baby boomer employees who work at Pewlett Hackard (a "silver tsunami"). The company has several thousand employees and wanted to:
+
     1. Prepare retirement packages to qualifying retirees
     2. Find out which positions need to be filled in the near future
+
 In this analysis, the names of retiring employees and the number of positions needed to be filled were found to help future-proof the company. 
 
 Two tables were of particular interest:
+
     1. A table of the number of employees grouped by their most recent job title who are eligible to retire soon
     2. A list of the current employees who were born in 1965 with their title who could take part in a mentorship program to train incoming employees
 
@@ -19,7 +22,7 @@ ERD:
 
 ## Results: 
 
-- Senior engineers and senior staff are the bulk of who's leaving. Two of the nine managers will also be leaving. The company will need to see if current engineers and staff could be promoted to senior engineers, senior staff, and managers, or if outside hires should be made for higher level positions. 
+- Senior engineers and senior staff make up the bulk of who's leaving. Two of the nine managers will also be leaving. The company will need to see if current engineers and staff could be promoted to senior engineers, senior staff, and managers, or if outside hires should be made for higher level positions. 
 - Knowledge comes with holding a senior position in a company. Many of the upcoming higher-level job vacancies indicate that a mentorship program would likely greatly benefit the company so that this knowledge is not lost. 
 - 1549 employees were included in the list of who could be a part of the mentorship program, and many of them hold senior-level positions, making them ideal to train new employees. 
 - The count of current employees eligible for retirement was 7245, over four times the number of people who could be mentors. If there is a mentorship program, each mentor will have at least four employees they are mentoring. If a smaller ratio is desired, the group of potential mentors could be expanded to more than just employees born in 1965. 
@@ -39,4 +42,4 @@ The following questions summarize the analysis:
 
 Two additional queries would be helpful to prepare for the upcoming "silver tsunami":
 1. A count of potential mentors by department, to ensure that there are enough mentors for each department 
-2. A table with employees who are current staff and engineers, and that have worked at the company for at least 20 years. This could give a list of employees who could potentially be promoted to senior staff and senior engineers. This would help determine how many lower level and how many senior level employees would need to be hired as older employees retired. 
+2. A table with employees who are current staff and engineers, and that have worked at the company for at least 20 years. This would give a list of employees who could potentially be promoted to senior staff and senior engineers. This could help determine how many lower level and how many senior level employees would need to be hired as older employees retired. 
