@@ -4,15 +4,15 @@
 
 The purpose of this analysis was to help the company prepare for the mass retirement of baby boomer employees who work at Pewlett Hackard (a "silver tsunami"). The company has several thousand employees and wanted to:
 
-    1. Prepare retirement packages to qualifying retirees
-    2. Find out which positions need to be filled in the near future
+1. Prepare retirement packages to qualifying retirees
+2. Find out which positions need to be filled in the near future
 
 In this analysis, the names of retiring employees and the number of positions needed to be filled were found to help future-proof the company. 
 
 Two tables were of particular interest:
 
-    1. A table of the number of employees grouped by their most recent job title who are eligible to retire soon
-    2. A list of the current employees who were born in 1965 with their title who could take part in a mentorship program to train incoming employees
+1. A table of the number of employees grouped by their most recent job title who are eligible to retire soon
+2. A list of the current employees who were born in 1965 with their title who could take part in a mentorship program to train incoming employees
 
 Data was provided in six tables and included personal data about employees, their departments, their salaries, their titles, their dates of employment, and department managers. Data was uploaded into PostgreSQL and code was edited in pgAdmin. An Entity Relationships Diagram (ERD) was created to help determine relationships between variables in the data. Primary and foreign keys used in the analysis included a unique employee number and a unique department number. 
 
