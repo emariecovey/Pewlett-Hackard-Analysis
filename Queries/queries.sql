@@ -146,7 +146,8 @@ WHERE to_date = ('9999-01-01')
 --3. Department Retirees: An updated current_emp list that includes 
 --everything it currently has, but also the employee's departments
 
---this table has more employees than before? 
+--fixed this table so that only employees current department is there
+--table is correct and should be good to go
 
 SELECT ce.emp_no,
 	ce.first_name,
@@ -159,12 +160,11 @@ FROM current_emp as ce
 	ON (ce.emp_no = de.emp_no)
 	INNER JOIN departments as d
 	ON (de.dept_no = d.dept_no)
+WHERE (de.to_date = '9999-01-01') --this gets people who are currently in the department 
 
 select count(emp_no) from current_emp
 --33118 current employees
 
-select count(emp_no) from dept_info
---36619 employees? How did we get more employees when we used inner joins??????????
 -------------------------------------------------------------------------------
 
 --additional needed list for sales team: emp num, emp first, emp last, emp dept name
@@ -182,8 +182,9 @@ FROM retirement_info as ri
 	INNER JOIN departments as d
 		ON de.dept_no = d.dept_no
 WHERE d.dept_name = 'Sales'
+	AND (de.to_date = '9999-01-01')
 
-SELECT * FROM retirement_info
+SELECT * FROM sales_retirement_info
 
 --same list as above, but with people in sales and development departments
 SELECT ri.emp_no,
@@ -196,6 +197,7 @@ FROM retirement_info as ri
 		ON ri.emp_no = de.emp_no
 	INNER JOIN departments as d
 		ON de.dept_no = d.dept_no
-WHERE d.dept_name IN ('Sales', 'Development') --says sales or development
+WHERE (d.dept_name IN ('Sales', 'Development')) --says sales or development
+	AND (de.to_date = '9999-01-01') --puts only people currently in the department in this table
 
-SELECT * FROM sales_dev_retirement_info
+select * from retirement_info
